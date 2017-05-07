@@ -40,7 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Author.cs" />
+    <Compile Include="Model\Candidate.cs" />
+    <Compile Include="Model\Department.cs" />
+    <Compile Include="Model\DepartmentAlias.cs" />
+    <Compile Include="Model\Paper.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\PersonDepartment.cs" />
+    <Compile Include="Model\Status.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Apopad.Common\Apopad.Common.csproj">
+      <Project>{a9cbcfcd-d5df-4116-b480-1d564737d5d5}</Project>
+      <Name>Apopad.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
