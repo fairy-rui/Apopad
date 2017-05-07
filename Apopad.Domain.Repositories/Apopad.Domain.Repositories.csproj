@@ -53,7 +53,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityFramework\ApopadContext.cs" />
+    <Compile Include="EntityFramework\Configuration\AuthorEntityConfiguration.cs" />
+    <Compile Include="EntityFramework\Configuration\CandidateEntityConfiguration.cs" />
+    <Compile Include="EntityFramework\Configuration\DepartmentAliasEntityConfiguration.cs" />
+    <Compile Include="EntityFramework\Configuration\DepartmentEntityConfiguration.cs" />
     <Compile Include="EntityFramework\Configuration\PaperEntityConfiguration.cs" />
+    <Compile Include="EntityFramework\Configuration\PersonDepartmentEntityConfiguration.cs" />
+    <Compile Include="EntityFramework\Configuration\PersonEntityConfiguration.cs" />
     <Compile Include="EntityFramework\EntityFrameworkRepository.cs" />
     <Compile Include="EntityFramework\EntityFrameworkRepositoryContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
