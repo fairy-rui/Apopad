@@ -17,11 +17,18 @@ namespace Apopad.Domain.Repositories.EntityFramework
         public virtual DbSet<Paper> Papers { get; set; }
         public virtual DbSet<Person> Person { get; set; }
         public virtual DbSet<PersonDepartment> PersonDepartments { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        //public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Configurations.Add(new AuthorEntityConfiguration())
+                .Add(new CandidateEntityConfiguration())
+                .Add(new DepartmentEntityConfiguration())
+                .Add(new DepartmentAliasEntityConfiguration())
+                .Add(new PaperEntityConfiguration())
+                .Add(new PersonDepartmentEntityConfiguration())
+                .Add(new PersonEntityConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
     }

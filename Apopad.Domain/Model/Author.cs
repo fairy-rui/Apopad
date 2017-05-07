@@ -8,7 +8,7 @@ namespace Apopad.Domain.Model
     {      
         public Author()
         {
-            Candidate = new HashSet<Candidate>();
+            Candidates = new HashSet<Candidate>();
         }
 
         public int Id { get; set; }
@@ -21,7 +21,7 @@ namespace Apopad.Domain.Model
 
         public string NameENAbbr { get; set; }
 
-        public string Department { get; set; }
+        public string DepartmentName { get; set; }
 
         public bool IsCorrespondingAuthor { get; set; }
 
@@ -35,6 +35,6 @@ namespace Apopad.Domain.Model
 
         public virtual Paper Paper { get; set; }
         
-        public virtual ICollection<Candidate> Candidate { get; set; }
+        public virtual ICollection<Candidate> Candidates { get; set; }
     }
 }

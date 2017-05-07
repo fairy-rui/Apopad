@@ -14,7 +14,7 @@ namespace Apopad.Domain.Model
 
         public string Name { get; set; }
 
-        public CandidateStatus status { get; set; }
+        public CandidateStatus Status { get; set; }
 
         public string Operator { get; set; }
 

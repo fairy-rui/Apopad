@@ -105,9 +105,9 @@ namespace Apopad.Domain.Model
 
         public string ISIArticleIdentifier { get; set; }
 
-        public PaperStatus status { get; set; }
+        public PaperStatus Status { get; set; }
 
-        public int? PaperDepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
 
         public virtual ICollection<Author> Authors { get; set; }
 

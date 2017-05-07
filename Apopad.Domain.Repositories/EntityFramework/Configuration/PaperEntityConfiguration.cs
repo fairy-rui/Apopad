@@ -1,11 +1,6 @@
 ﻿using Apopad.Domain.Model;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Apopad.Domain.Repositories.EntityFramework
 {
@@ -184,7 +179,7 @@ namespace Apopad.Domain.Repositories.EntityFramework
                 .HasColumnType("nvarchar")
                 .HasMaxLength(128)
                 .IsOptional();
-            Property(p => p.status)
+            Property(p => p.Status)
                 .HasColumnType("int")
                 .IsRequired();
 
