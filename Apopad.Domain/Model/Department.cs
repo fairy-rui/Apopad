@@ -11,7 +11,7 @@ namespace Apopad.Domain.Model
             Children = new HashSet<Department>();
             Papers = new HashSet<Paper>();
             People = new HashSet<PersonDepartment>();
-            Users = new HashSet<User>();
+            //Users = new HashSet<User>();
         }
 
         public int Id { get; set; }
@@ -36,6 +36,6 @@ namespace Apopad.Domain.Model
 
         public virtual ICollection<PersonDepartment> People { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        //public virtual ICollection<User> Users { get; set; }
     }
 }

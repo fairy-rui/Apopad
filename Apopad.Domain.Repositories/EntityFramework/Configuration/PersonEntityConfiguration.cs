@@ -60,6 +60,11 @@ namespace Apopad.Domain.Repositories.EntityFramework
                 .WithRequired(d => d.Person)
                 .HasForeignKey(d => d.PersonId)
                 .WillCascadeOnDelete(false);
+
+            HasMany(p => p.Candidates)
+                .WithOptional(c => c.Person)
+                .HasForeignKey(c => c.PersonId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

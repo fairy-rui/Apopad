@@ -6,7 +6,7 @@ namespace Apopad.Domain.Repositories.EntityFramework
     public class ApopadContext : DbContext
     {
         public ApopadContext()
-            : base("ApopadDb")
+            : base("ApopadContext")
         {
         }
 

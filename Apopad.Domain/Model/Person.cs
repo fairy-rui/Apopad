@@ -9,6 +9,7 @@ namespace Apopad.Domain.Model
         public Person()
         {
             Departments = new HashSet<PersonDepartment>();
+            Candidates = new HashSet<Candidate>();
         }
 
         public int Id { get; set; }
@@ -36,5 +37,7 @@ namespace Apopad.Domain.Model
         public PersonType PersonType { get; set; }
 
         public virtual ICollection<PersonDepartment> Departments { get; set; }
+        public virtual ICollection<Candidate> Candidates { get; set; }
+
     }
 }

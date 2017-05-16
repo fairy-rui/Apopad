@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -46,6 +47,8 @@ namespace Apopad.Common.Repositories
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> that propagates the notification that the operation should be cancelled.</param>
         /// <returns>The <see cref="Task"/> which performs the commit operation.</returns>
         Task CommitAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        IEnumerable<TElement> SqlQuery<TElement>(string sql, params object[] parameters);
     }
 
     /// <summary>

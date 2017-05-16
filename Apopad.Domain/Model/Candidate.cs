@@ -8,7 +8,7 @@ namespace Apopad.Domain.Model
 
         public int AuthorId { get; set; }
 
-        public int PersonId { get; set; }
+        public int? PersonId { get; set; }
 
         public string PersonNo { get; set; }
 
@@ -19,5 +19,6 @@ namespace Apopad.Domain.Model
         public string Operator { get; set; }
 
         public virtual Author Author { get; set; }
+        public virtual Person Person { get; set; }
     }
 }

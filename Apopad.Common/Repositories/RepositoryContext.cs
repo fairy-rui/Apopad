@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -93,6 +94,8 @@ namespace Apopad.Common.Repositories
         {
             return Task.Factory.StartNew(Commit, cancellationToken);
         }
+
+        public abstract IEnumerable<TElement> SqlQuery<TElement>(string sql, params object[] parameters);
         #endregion
 
         #region Protected Methods

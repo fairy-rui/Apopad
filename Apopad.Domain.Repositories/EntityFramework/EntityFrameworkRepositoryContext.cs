@@ -2,6 +2,8 @@
 using System.Data.Entity;
 using System.Threading;
 using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
 
 namespace Apopad.Domain.Repositories.EntityFramework
 {
@@ -30,6 +32,11 @@ namespace Apopad.Domain.Repositories.EntityFramework
             {
                 this.Session.Dispose();
             }
+        }
+
+        public override IEnumerable<TElement> SqlQuery<TElement>(string sql, params object[] parameters)
+        {
+            return this.Session.Database.SqlQuery<TElement>(sql, parameters);
         }
     }
 }

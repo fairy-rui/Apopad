@@ -1,16 +1,21 @@
 ﻿using Apopad.Common;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Apopad.Domain.Model
 {
     public partial class Paper : IAggregateRoot<int>
-    {       
+    {
+        #region Ctor
         public Paper()
         {
             Authors = new HashSet<Author>();
         }
+        #endregion
 
+        #region Properties
         public int Id { get; set; }
 
         public string PressType { get; set; }
@@ -47,9 +52,9 @@ namespace Apopad.Domain.Model
 
         public string AuthorsAddress { get; set; }
 
-        public string CorrespondenceEN { get; set; }
+        public string ReprintAddress { get; set; }
 
-        public string CorrespondenceCN { get; set; }
+        public string ReprintAuthor { get; set; }
 
         public string CorrespondenceSignUnit { get; set; }
 
@@ -112,5 +117,53 @@ namespace Apopad.Domain.Model
         public virtual ICollection<Author> Authors { get; set; }
 
         public virtual Department Department { get; set; }
+        #endregion
+
+        #region Public Methods
+        public string[] getAuthorOriginalName()
+        {
+            return AuthorsFull.Split(';').Select(t => t.Trim()).ToArray();
+        }
+
+        public string[] getAuthorAbbrName()
+        {
+            return AuthorsShort.Split(';').Select(t => t.Trim()).ToArray();
+        }
+        public string[] extractAuthorFromAddress()
+        {
+            //匹配方括号中的作者名字
+            string pattern = @"(?<=\])[^]]*(?=\])";
+            string[] ary = Regex.Matches(AuthorsAddress, pattern).Cast<Match>().Select(t => t.Value).ToArray();
+
+            //作者地址中仅有作者单位
+            if(ary.Count() == 0)
+            {
+                ary = new string[1] { AuthorsFull };
+            }
+
+            return ary;
+        }
+        public string[] extractAuthorAddress()
+        {
+            //匹配C1中的作者地址
+            string pattern = @"(?<=\[.+\])[^]]*(?=\[|$)";
+            string[] ary = Regex.Matches(AuthorsAddress, pattern).Cast<Match>().Select(t => t.Value).ToArray();
+
+            //作者地址中仅有作者单位
+            if (ary.Count() == 0)
+            {
+                ary = new string[1] { AuthorsAddress };
+            }
+
+            return ary;
+        }
+        public string extractReprintAuthor()
+        {
+            //匹配通信作者
+            string pattern = @"(?<=^)[^(]*(?=\()";
+            return Regex.Match(ReprintAddress, pattern).Value.Trim();
+        }
+
+        #endregion
     }
 }

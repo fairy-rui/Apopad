@@ -72,11 +72,11 @@ namespace Apopad.Domain.Repositories.EntityFramework
             Property(p => p.AuthorsAddress)
                 .HasColumnType("nvarchar(max)")
                 .IsOptional();
-            Property(p => p.CorrespondenceEN)
+            Property(p => p.ReprintAddress)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(1024)
                 .IsOptional();
-            Property(p => p.CorrespondenceCN)
+            Property(p => p.ReprintAuthor)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(1024)
                 .IsOptional();
