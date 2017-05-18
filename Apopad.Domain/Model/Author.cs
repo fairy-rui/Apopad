@@ -33,6 +33,8 @@ namespace Apopad.Domain.Model
 
         public bool HasCandidate { get; set; }
 
+        public byte[] TimeStamp { get; set; }
+
         public virtual Paper Paper { get; set; }
         
         public virtual ICollection<Candidate> Candidates { get; set; }

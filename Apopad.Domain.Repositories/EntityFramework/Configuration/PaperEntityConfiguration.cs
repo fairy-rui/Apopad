@@ -13,38 +13,38 @@ namespace Apopad.Domain.Repositories.EntityFramework
             HasKey(p => p.Id);//设置主键
             Property(p => p.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            Property(p => p.PressType)
+            Property(p => p.PublicationType)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(255)
                 .IsOptional();
-            Property(p => p.AuthorsShort)
+            Property(p => p.AuthorName)
                 .HasColumnType("nvarchar(max)")
                 .IsRequired();
-            Property(p => p.AuthorsFull)
+            Property(p => p.AuthorFullName)
                 .HasColumnType("nvarchar(max)")
                 .IsRequired();
-            Property(p => p.ChineseName)
+            //Property(p => p.ChineseName)
+            //    .HasColumnType("nvarchar(max)")
+            //    .IsOptional();
+            //Property(p => p.FirstAuthorSignUnit)
+            //    .HasColumnType("nvarchar")
+            //    .HasMaxLength(1024)
+            //    .IsOptional();
+            //Property(p => p.SignOrder)
+            //    .HasColumnType("int")
+            //    .IsOptional();
+            //Property(p => p.DepartmentName)
+            //    .HasColumnType("nvarchar")
+            //    .HasMaxLength(512)
+            //    .IsOptional();
+            //Property(p => p.LabName)
+            //    .HasColumnType("nvarchar")
+            //    .HasMaxLength(512)
+            //    .IsOptional();
+            Property(p => p.DocumentTitle)
                 .HasColumnType("nvarchar(max)")
                 .IsOptional();
-            Property(p => p.FirstAuthorSignUnit)
-                .HasColumnType("nvarchar")
-                .HasMaxLength(1024)
-                .IsOptional();
-            Property(p => p.SignOrder)
-                .HasColumnType("int")
-                .IsOptional();
-            Property(p => p.DepartmentName)
-                .HasColumnType("nvarchar")
-                .HasMaxLength(512)
-                .IsOptional();
-            Property(p => p.LabName)
-                .HasColumnType("nvarchar")
-                .HasMaxLength(512)
-                .IsOptional();
-            Property(p => p.PaperName)
-                .HasColumnType("nvarchar(max)")
-                .IsOptional();
-            Property(p => p.JournalName)
+            Property(p => p.PublicationName)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(512)
                 .IsOptional();
@@ -56,56 +56,56 @@ namespace Apopad.Domain.Repositories.EntityFramework
                 .HasColumnType("nvarchar")
                 .HasMaxLength(64)
                 .IsOptional();
-            Property(p => p.PaperType)
+            Property(p => p.DocumentType)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(64)
                 .IsOptional();
-            Property(p => p.AuthorKeyWord)
+            Property(p => p.AuthorKeywords)
                 .HasColumnType("nvarchar(max)")
                 .IsOptional();
-            Property(p => p.KeyWords)
+            Property(p => p.Keywords)
                 .HasColumnType("nvarchar(max)")
                 .IsOptional();
             Property(p => p.Abstract)
                 .HasColumnType("nvarchar(max)")
                 .IsOptional();
-            Property(p => p.AuthorsAddress)
+            Property(p => p.AuthorAddress)
                 .HasColumnType("nvarchar(max)")
                 .IsOptional();
             Property(p => p.ReprintAddress)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(1024)
                 .IsOptional();
-            Property(p => p.ReprintAuthor)
-                .HasColumnType("nvarchar")
-                .HasMaxLength(1024)
-                .IsOptional();
-            Property(p => p.CorrespondenceSignUnit)
-                .HasColumnType("nvarchar")
-                .HasMaxLength(1024)
-                .IsOptional();
+            //Property(p => p.ReprintAuthor)
+            //    .HasColumnType("nvarchar")
+            //    .HasMaxLength(1024)
+            //    .IsOptional();
+            //Property(p => p.CorrespondenceSignUnit)
+            //    .HasColumnType("nvarchar")
+            //    .HasMaxLength(1024)
+            //    .IsOptional();
             Property(p => p.EmailAddress)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(1024)
                 .IsOptional();
-            Property(p => p.Reference)
+            Property(p => p.CitedReferences)
                 .HasColumnType("text")
                 .IsOptional();
-            Property(p => p.ReferenceCount)
+            Property(p => p.CitedReferenceCount)
                 .HasColumnType("int")
                 .IsOptional();
-            Property(p => p.CitedCount)
+            Property(p => p.TotalCitedCount)
                 .HasColumnType("int")
                 .IsOptional();
-            Property(p => p.Press)
+            Property(p => p.Publisher)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(512)
                 .IsOptional();
-            Property(p => p.City)
+            Property(p => p.PublisherCity)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(512)
                 .IsOptional();
-            Property(p => p.PressAddress)
+            Property(p => p.PublisherAddress)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(512)
                 .IsOptional();
@@ -113,19 +113,19 @@ namespace Apopad.Domain.Repositories.EntityFramework
                 .HasColumnType("nvarchar")
                 .HasMaxLength(128)
                 .IsOptional();
-            Property(p => p.DI)
+            Property(p => p.DOI)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(128)
                 .IsOptional();
-            Property(p => p.StandardJournalAbbr)
+            Property(p => p.SourceAbbreviation)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(512)
                 .IsOptional();
-            Property(p => p.ISIJournalAbbr)
+            Property(p => p.ISOSourceAbbreviation)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(512)
                 .IsOptional();
-            Property(p => p.PublishDate)
+            Property(p => p.PublicationDate)
                 .HasColumnType("date")
                 .IsOptional();
             Property(p => p.Year)
@@ -163,25 +163,29 @@ namespace Apopad.Domain.Repositories.EntityFramework
                 .HasColumnType("nvarchar")
                 .HasMaxLength(255)
                 .IsOptional();
-            Property(p => p.SubjectCategory)
+            Property(p => p.Categories)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(1024)
                 .IsOptional();
-            Property(p => p.IncludeType)
-                .HasColumnType("nvarchar")
-                .HasMaxLength(128)
-                .IsOptional();
-            Property(p => p.ISIDeliveryNo)
+            //Property(p => p.IncludeType)
+            //    .HasColumnType("nvarchar")
+            //    .HasMaxLength(128)
+            //    .IsOptional();
+            Property(p => p.DeliveryNumber)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(255)
                 .IsOptional();
-            Property(p => p.ISIArticleIdentifier)
+            Property(p => p.AccessionNumber)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(128)
                 .IsOptional();
             Property(p => p.Status)
                 .HasColumnType("int")
                 .IsRequired();
+            Property(p => p.TimeStamp)
+                .IsRequired()
+                .IsRowVersion()
+                .HasMaxLength(8);
 
             HasMany(p => p.Authors)
                 .WithRequired(a => a.Paper)

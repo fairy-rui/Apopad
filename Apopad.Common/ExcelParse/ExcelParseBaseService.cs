@@ -104,6 +104,7 @@ namespace Apopad.Common.ExcelParse
             //cellValue = TruncateString(cellValue, new char[] { ' ' }, new char[] { '　' });
             //去除中文字符之间的空格
             cellValue = Regex.Replace(cellValue, @"(?<=[\u4e00-\u9fa5])(\s+)(?=[\u4e00-\u9fa5])", string.Empty);
+            cellValue = cellValue.Trim();
         }
 
         // 对字符串做空格剔除处理

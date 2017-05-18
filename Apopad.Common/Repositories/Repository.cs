@@ -32,6 +32,8 @@ namespace Apopad.Common.Repositories
         /// </summary>
         public IRepositoryContext Context { get; }
 
+        public abstract TAggregateRoot Attach(TAggregateRoot aggregateRoot);
+
         /// <summary>
         /// Adds the specified <see cref="T:Apopad.Common.IAggregateRoot`1" /> instance to the current repository.
         /// </summary>

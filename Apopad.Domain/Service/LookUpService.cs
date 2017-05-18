@@ -2,11 +2,12 @@
 using Apopad.Domain.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace Apopad.Domain.Service
 {
-    public class LookUpService
+    public class LookUpService : ILookUpService
     {
         private readonly IRepositoryContext repositoryContext;
         private readonly IRepository<int, Paper> paperRepository;
@@ -136,8 +137,16 @@ namespace Apopad.Domain.Service
         /// <returns>找到的候选人列表</returns>
         public List<Person> GetPersonFromDept(Author author)
         {
-            var pList = repositoryContext.SqlQuery<Person>("dbo.spLookUpCandidate @authorId", author.Id)
+            SqlParameter[] param = new SqlParameter[]
+            {
+                new SqlParameter("@authorId", author.Id),
+            };
+            var pList = repositoryContext.SqlQuery<Person>("dbo.spLookUpCandidate @authorId", param)
                         .ToList();
+            for(int i = 0; i < pList.Count; i++)
+            {
+                pList[i] = personRepository.Attach(pList[i]);
+            }
 
             return pList;
         }
@@ -146,7 +155,7 @@ namespace Apopad.Domain.Service
         {
             int publishYear = -1;
             if (paper.Year.HasValue) publishYear = paper.Year.Value;
-            if (publishYear < 0 && paper.PublishDate.HasValue) publishYear = paper.PublishDate.Value.Year;
+            if (publishYear < 0 && paper.PublicationDate.HasValue) publishYear = paper.PublicationDate.Value.Year;
             if (publishYear < 0) return people;
 
             List<Person> pList = new List<Person>();

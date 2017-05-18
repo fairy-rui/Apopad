@@ -31,6 +31,10 @@ namespace Apopad.Domain.Repositories.EntityFramework
                 .HasColumnType("nvarchar")
                 .HasMaxLength(64)
                 .IsOptional();
+            Property(c => c.TimeStamp)
+                .IsRequired()
+                .IsRowVersion()
+                .HasMaxLength(8);
         }
     }
 }

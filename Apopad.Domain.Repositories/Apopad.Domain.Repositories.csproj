@@ -54,18 +54,18 @@
   <ItemGroup>
     <Compile Include="EntityFramework\ApopadContext.cs" />
     <Compile Include="EntityFramework\Configuration\AuthorEntityConfiguration.cs" />
+    <Compile Include="EntityFramework\Configuration\AuthorKeyWordEntityConfiguration.cs" />
+    <Compile Include="EntityFramework\Configuration\AuthorShipEntityConfiguration.cs" />
     <Compile Include="EntityFramework\Configuration\CandidateEntityConfiguration.cs" />
+    <Compile Include="EntityFramework\Configuration\CoAuthorShipEntityConfiguration.cs" />
     <Compile Include="EntityFramework\Configuration\DepartmentAliasEntityConfiguration.cs" />
     <Compile Include="EntityFramework\Configuration\DepartmentEntityConfiguration.cs" />
+    <Compile Include="EntityFramework\Configuration\KeyWordsEntityConfiguration.cs" />
     <Compile Include="EntityFramework\Configuration\PaperEntityConfiguration.cs" />
     <Compile Include="EntityFramework\Configuration\PersonDepartmentEntityConfiguration.cs" />
     <Compile Include="EntityFramework\Configuration\PersonEntityConfiguration.cs" />
     <Compile Include="EntityFramework\EntityFrameworkRepository.cs" />
     <Compile Include="EntityFramework\EntityFrameworkRepositoryContext.cs" />
-    <Compile Include="Migrations\201705100303174_InitialModel.cs" />
-    <Compile Include="Migrations\201705100303174_InitialModel.Designer.cs">
-      <DependentUpon>201705100303174_InitialModel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,11 +84,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705100303174_InitialModel.resx">
-      <DependentUpon>201705100303174_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

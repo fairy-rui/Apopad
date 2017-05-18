@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<module>
+  <add firstHeaderRow="1" lastHeaderRow="1" sheetCount="1"/>
+  <add headerText="PT" propertyName="PublicationType" dataType="System.String"/>
+  <add headerText="AU" propertyName="AuthorName" dataType="System.String"/>
+  <add headerText="AF" propertyName="AuthorFullName" dataType="System.String"/>
+  <add headerText="TI" propertyName="DocumentTitle" dataType="System.String"/>
+  <add headerText="SO" propertyName="PublicationName" dataType="System.String"/>
+  <add headerText="SE" propertyName="Series" dataType="System.String"/>
+  <add headerText="LA" propertyName="Language" dataType="System.String"/>
+  <add headerText="DT" propertyName="DocumentType" dataType="System.String"/>
+  <add headerText="DE" propertyName="AuthorKeywords" dataType="System.String"/>
+  <add headerText="ID" propertyName="Keywords" dataType="System.String"/>
+  <add headerText="AB" propertyName="Abstract" dataType="System.String"/>
+  <add headerText="C1" propertyName="AuthorAddress" dataType="System.String"/>
+  <add headerText="RP" propertyName="ReprintAddress" dataType="System.String"/>
+  <add headerText="EM" propertyName="EmailAddress" dataType="System.String"/>
+  <add headerText="CR" propertyName="CitedReferences" dataType="System.String"/>
+  <add headerText="NR" propertyName="CitedReferenceCount" dataType="System.String"/>
+  <add headerText="Z9" propertyName="TotalCitedCount" dataType="System.String"/>
+  <add headerText="PU" propertyName="Publisher" dataType="System.String"/>
+  <add headerText="PI" propertyName="PublisherCity" dataType="System.String"/>
+  <add headerText="PA" propertyName="PublisherAddress" dataType="System.String"/>
+  <add headerText="SN" propertyName="ISSN" dataType="System.String"/>
+  <add headerText="J9" propertyName="SourceAbbreviation" dataType="System.String"/>
+  <add headerText="JI" propertyName="ISOSourceAbbreviation" dataType="System.String"/>
+  <add headerText="PD" propertyName="PublicationDate" dataType="System.String"/>
+  <add headerText="PY" propertyName="Year" dataType="System.String"/>
+  <add headerText="VL" propertyName="Volume" dataType="System.String"/>
+  <add headerText="IS" propertyName="Issue" dataType="System.String"/>
+  <add headerText="PN" propertyName="PartNumber" dataType="System.String"/>
+  <add headerText="SU" propertyName="Supplement" dataType="System.String"/>
+  <add headerText="SI" propertyName="SpecialIssue" dataType="System.String"/>
+  <add headerText="BP" propertyName="StartPage" dataType="System.String"/>
+  <add headerText="EP" propertyName="EndPage" dataType="System.String"/>
+  <add headerText="AR" propertyName="ArticleNumber" dataType="System.String"/>
+  <add headerText="DI" propertyName="DOI" dataType="System.String"/>
+  <add headerText="PG" propertyName="PageCount" dataType="System.String"/>
+  <add headerText="WC" propertyName="Categories" dataType="System.String"/>
+  <add headerText="GA" propertyName="DeliveryNumber" dataType="System.String"/>
+  <add headerText="UT" propertyName="AccessionNumber" dataType="System.String"/>
+</module>

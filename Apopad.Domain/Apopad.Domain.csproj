@@ -41,7 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Author.cs" />
+    <Compile Include="Model\AuthorKeyWord.cs" />
+    <Compile Include="Model\KeyWords.cs" />
+    <Compile Include="Model\AuthorShip.cs" />
     <Compile Include="Model\Candidate.cs" />
+    <Compile Include="Model\CoAuthorShip.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\DepartmentAlias.cs" />
     <Compile Include="Model\Paper.cs" />
@@ -50,6 +54,7 @@
     <Compile Include="Model\Status.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\ILookUpService.cs" />
     <Compile Include="Service\IPretreatmentService.cs" />
     <Compile Include="Service\LookUpService.cs" />
     <Compile Include="Service\PretreatmentService.cs" />

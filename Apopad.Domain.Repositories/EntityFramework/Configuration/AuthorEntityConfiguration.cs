@@ -43,6 +43,10 @@ namespace Apopad.Domain.Repositories.EntityFramework
             Property(a => a.HasCandidate)
                 .HasColumnType("bit")
                 .IsRequired();
+            Property(a => a.TimeStamp)
+                .IsRequired()
+                .IsRowVersion()
+                .HasMaxLength(8);
 
             HasMany(a => a.Candidates)
                 .WithRequired(c => c.Author)

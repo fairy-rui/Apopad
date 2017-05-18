@@ -26,13 +26,13 @@ namespace Apopad.Common.Normalization
 
             //加载拼音音节的正则表达式
             using (StreamReader reader = new StreamReader(string.Format("{0}{1}", baseDict,
-                    @"..\..\Normalization\yinjie.txt"), Encoding.Default))
+                    @"\App_Data\yinjie.txt"), Encoding.Default))
             {
                 syllableReg = reader.ReadLine();
             }
             //加载汉语单姓拼音
             using (StreamReader reader = new StreamReader(string.Format("{0}{1}", baseDict,
-                    @"..\..\Normalization\single.txt"), Encoding.UTF8))
+                    @"\App_Data\single.txt"), Encoding.UTF8))
             {
                 String str = null;
                 while (null != (str = reader.ReadLine()))
@@ -42,7 +42,7 @@ namespace Apopad.Common.Normalization
             }
             //加载汉语复姓拼音
             using (StreamReader reader = new StreamReader(string.Format("{0}{1}", baseDict,
-                    @"..\..\Normalization\multy.txt"), Encoding.UTF8))
+                    @"\App_Data\multy.txt"), Encoding.UTF8))
             {
                 String str = null;
                 while (null != (str = reader.ReadLine()))

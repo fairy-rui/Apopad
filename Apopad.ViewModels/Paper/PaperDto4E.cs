@@ -2,55 +2,55 @@
 {
     public class PaperDto4E
     {
-        public string PressType { get; set; }
+        public string PublicationType { get; set; }
 
-        public string AuthorsShort { get; set; }
+        public string AuthorName { get; set; }
 
-        public string AuthorsFull { get; set; }
+        public string AuthorFullName { get; set; }
 
-        public string PaperName { get; set; }
+        public string DocumentTitle { get; set; }
 
-        public string JournalName { get; set; }
+        public string PublicationName { get; set; }
 
         public string Series { get; set; }
 
         public string Language { get; set; }
 
-        public string PaperType { get; set; }
+        public string DocumentType { get; set; }
 
-        public string AuthorKeyWord { get; set; }
+        public string AuthorKeywords { get; set; }
 
-        public string KeyWords { get; set; }
+        public string Keywords { get; set; }
 
         public string Abstract { get; set; }
 
-        public string AuthorsAddress { get; set; }
+        public string AuthorAddress { get; set; }
 
         public string ReprintAddress { get; set; }
 
         public string EmailAddress { get; set; }
 
-        public string Reference { get; set; }
+        public string CitedReferences { get; set; }
 
-        public string ReferenceCount { get; set; }
+        public string CitedReferenceCount { get; set; }
 
-        public string CitedCount { get; set; }
+        public string TotalCitedCount { get; set; }
 
-        public string Press { get; set; }
+        public string Publisher { get; set; }
 
-        public string City { get; set; }
+        public string PublisherCity { get; set; }
 
-        public string PressAddress { get; set; }
+        public string PublisherAddress { get; set; }
 
         public string ISSN { get; set; }
 
-        public string DI { get; set; }
+        public string DOI { get; set; }
 
-        public string StandardJournalAbbr { get; set; }
+        public string SourceAbbreviation { get; set; }
 
-        public string ISIJournalAbbr { get; set; }
+        public string ISOSourceAbbreviation { get; set; }
 
-        public string PublishDate { get; set; }
+        public string PublicationDate { get; set; }
 
         public string Year { get; set; }
 
@@ -72,12 +72,10 @@
 
         public string ArticleNumber { get; set; }
 
-        public string SubjectCategory { get; set; }
+        public string Categories { get; set; }
+       
+        public string DeliveryNumber { get; set; }
 
-        public string IncludeType { get; set; }
-
-        public string ISIDeliveryNo { get; set; }
-
-        public string ISIArticleIdentifier { get; set; }
+        public string AccessionNumber { get; set; }
     }
 }

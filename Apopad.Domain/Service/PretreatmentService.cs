@@ -89,7 +89,7 @@ namespace Apopad.Domain.Service
             Name name = null;
             
             //解析作者名字，检测是否是简拼、倒序
-            var names = parseName.normalizeNames(paper.AuthorsFull);
+            var names = parseName.normalizeNames(paper.AuthorFullName);
 
             //对每个作者进行预处理，生成model
             for (int i = 0; i < authorFull.Count(); i++)
@@ -109,7 +109,7 @@ namespace Apopad.Domain.Service
                     Ordinal = i + 1,
                     DepartmentName = string.Join(";", userDept),
                     IsCorrespondingAuthor = authorAbbr[i].Trim() == connAuthor,
-                    PublishDate = paper.PublishDate,
+                    PublishDate = paper.PublicationDate,
                     IsOtherUnit = userOrdinal > 0 ? false : true,
                     SignOrdinal = userOrdinal,
                 };
@@ -160,7 +160,7 @@ namespace Apopad.Domain.Service
 
             foreach(var address in ary)
             {
-                var deptList = Search(address, 1, 0.7);
+                var deptList = Search(address, 1, 0.6);
                 if(deptList.Count() > 0)
                 {
                     var dept = deptList.First();
@@ -189,7 +189,7 @@ namespace Apopad.Domain.Service
             //去提取出的作者数组中进行匹配
             for (int i = 0; i < authors.Count(); i++)
             {
-                string[] nameSpell = authors[i].Split(';');
+                string[] nameSpell = authors[i].Split(';').Select(s => s.Trim()).ToArray();
                 if (nameSpell.Where(s => s == name).Count() > 0)  //该行匹配成功
                 {
                     index++;
@@ -220,7 +220,7 @@ namespace Apopad.Domain.Service
             //去提取出的作者数组中进行匹配
             for (int i = 0; i < authors.Count(); i++)
             {
-                string[] nameSpell = authors[i].Split(';');
+                string[] nameSpell = authors[i].Split(';').Select(s => s.Trim()).ToArray();
                 if (nameSpell.Where(s => s == name).Count() > 0)  //该行匹配成功
                 {
                     //找到该作者的学校或单位

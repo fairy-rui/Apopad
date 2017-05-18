@@ -21,6 +21,8 @@ namespace Apopad.Common.Repositories
         /// </summary>
         IRepositoryContext Context { get; }
 
+        TAggregateRoot Attach(TAggregateRoot aggregateRoot);
+
         /// <summary>
         /// Adds the specified <see cref="IAggregateRoot{TKey}"/> instance to the current repository.
         /// </summary>

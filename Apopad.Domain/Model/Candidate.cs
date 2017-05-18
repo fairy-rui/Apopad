@@ -18,6 +18,8 @@ namespace Apopad.Domain.Model
 
         public string Operator { get; set; }
 
+        public byte[] TimeStamp { get; set; }
+
         public virtual Author Author { get; set; }
         public virtual Person Person { get; set; }
     }

@@ -24,6 +24,21 @@ namespace Apopad.Domain.Repositories.EntityFramework
             this.dbContext = entityFrameworkRepositoryContext.Session;
         }
 
+        public override TAggregateRoot Attach(TAggregateRoot aggregateRoot)
+        {
+            var entity = this.dbContext.Set<TAggregateRoot>().Local
+                        .FirstOrDefault(e => e.Id.Equals(aggregateRoot.Id));
+            if (entity != null)
+            {
+                return entity;
+            }
+            else
+            {
+                return this.dbContext.Set<TAggregateRoot>().Attach(aggregateRoot);
+            }
+            
+        }
+
         public override void Add(TAggregateRoot aggregateRoot)
         {
             this.dbContext
