@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{14A7B5D9-461B-4FE5-9852-194F509904DC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SrimsOUC.Data.Model</RootNamespace>
+    <AssemblyName>SrimsOUC.Data.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="models\AccountBookNumberCount.cs" />
+    <Compile Include="models\AllocationT.cs" />
+    <Compile Include="models\Announcement.cs" />
+    <Compile Include="models\Award.cs" />
+    <Compile Include="models\AwardDocument.cs" />
+    <Compile Include="models\AwardWinner.cs" />
+    <Compile Include="models\Base.cs" />
+    <Compile Include="models\Contract.cs" />
+    <Compile Include="models\Count.cs" />
+    <Compile Include="models\Department.cs" />
+    <Compile Include="models\Document.cs" />
+    <Compile Include="models\DocumentModel.cs" />
+    <Compile Include="models\Event.cs" />
+    <Compile Include="models\Expert.cs" />
+    <Compile Include="models\ExpertAchieveStatistic.cs" />
+    <Compile Include="models\ExpertAchieveStatisticIDArray.cs" />
+    <Compile Include="models\ExpertInfoHistory.cs" />
+    <Compile Include="models\Finance.cs" />
+    <Compile Include="models\FinanceBak.cs" />
+    <Compile Include="models\FinanceFundDescend.cs" />
+    <Compile Include="models\FundAllocation.cs" />
+    <Compile Include="models\FundAllocationStateHistory.cs" />
+    <Compile Include="models\FundDescend.cs" />
+    <Compile Include="models\FundDescendStateHistory.cs" />
+    <Compile Include="models\FundMember.cs" />
+    <Compile Include="models\LiberalArtsPaper.cs" />
+    <Compile Include="models\LiberalArtsPaperAuthor.cs" />
+    <Compile Include="models\Log.cs" />
+    <Compile Include="models\Magazine.cs" />
+    <Compile Include="models\MagazineInformation.cs" />
+    <Compile Include="models\MagazineOccupation.cs" />
+    <Compile Include="models\MagazineSubjectClass.cs" />
+    <Compile Include="models\ManagementFees.cs" />
+    <Compile Include="models\Message.cs" />
+    <Compile Include="models\NoticeText.cs" />
+    <Compile Include="models\Outsourcing.cs" />
+    <Compile Include="models\Paper.cs" />
+    <Compile Include="models\PaperAuthor.cs" />
+    <Compile Include="models\PaperIndexed.cs" />
+    <Compile Include="models\Patent.cs" />
+    <Compile Include="models\PatentAgency.cs" />
+    <Compile Include="models\PatentInventer.cs" />
+    <Compile Include="models\PayPlanItem.cs" />
+    <Compile Include="models\Performance.cs" />
+    <Compile Include="models\PerformanceAllocation.cs" />
+    <Compile Include="models\PerformanceAllocationStateHistory.cs" />
+    <Compile Include="models\PerformanceVoucher.cs" />
+    <Compile Include="models\PerformanceVoucherStateHistory.cs" />
+    <Compile Include="models\Permission.cs" />
+    <Compile Include="models\Project.cs" />
+    <Compile Include="models\ProjectInfo_Fund.cs" />
+    <Compile Include="models\ProjectInfo_Type.cs" />
+    <Compile Include="models\ProjectMember.cs" />
+    <Compile Include="models\ProjectOut.cs" />
+    <Compile Include="models\ProjectOutsourcingBudget.cs" />
+    <Compile Include="models\ProjectQualityPrincipal.cs" />
+    <Compile Include="models\ProjectRank.cs" />
+    <Compile Include="models\ProjectStateHistory.cs" />
+    <Compile Include="models\ProjectSupportCategory.cs" />
+    <Compile Include="models\ProjectSupportField.cs" />
+    <Compile Include="models\ProjectSupportSubField.cs" />
+    <Compile Include="models\ProjectType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="models\Recovery.cs" />
+    <Compile Include="models\Resource.cs" />
+    <Compile Include="SrimsContext.cs" />
+    <Compile Include="models\Stamp.cs" />
+    <Compile Include="models\StampApplication.cs" />
+    <Compile Include="models\StampApplicationFirstAdmin.cs" />
+    <Compile Include="models\StampApplicationSecondAdmin.cs" />
+    <Compile Include="models\StampApplicationType.cs" />
+    <Compile Include="models\StampApplicationTypeGroup.cs" />
+    <Compile Include="models\StampStateHistory.cs" />
+    <Compile Include="models\Stuff.cs" />
+    <Compile Include="models\StuffStamp.cs" />
+    <Compile Include="models\SubjectClassChineseEnglish.cs" />
+    <Compile Include="models\SubjectFirstLevel.cs" />
+    <Compile Include="models\SubjectSecondLevel.cs" />
+    <Compile Include="models\sysdiagrams.cs" />
+    <Compile Include="models\SystemSetting.cs" />
+    <Compile Include="models\User.cs" />
+    <Compile Include="models\UserLockLog.cs" />
+    <Compile Include="models\UserLoginLog.cs" />
+    <Compile Include="models\UserPermission.cs" />
+    <Compile Include="models\UserRole.cs" />
+    <Compile Include="models\UserRolePermission.cs" />
+    <Compile Include="models\View.cs" />
+    <Compile Include="models\Voucher.cs" />
+    <Compile Include="models\VoucherOut.cs" />
+    <Compile Include="models\VoucherStateHistory.cs" />
+    <Compile Include="models\VoucherT.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
