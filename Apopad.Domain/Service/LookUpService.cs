@@ -197,7 +197,8 @@ namespace Apopad.Domain.Service
             double count = 0, degree = 0;
             foreach(var author in authors)
             {
-                if(coAuthors.Any(p => p.NameEN.StartsWith(author.NameEN) || p.NameENAbbr.StartsWith(author.NameENAbbr)))
+                if(coAuthors.Any(p => string.IsNullOrEmpty(author.NameEN) ? false : p.NameEN.StartsWith(author.NameEN) 
+                    || string.IsNullOrEmpty(author.NameENAbbr) ? false : p.NameENAbbr.StartsWith(author.NameENAbbr)))
                 {
                     count++;
                 }
