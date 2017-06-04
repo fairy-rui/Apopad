@@ -14,6 +14,7 @@ namespace Apopad.Domain.Service
         private readonly IRepository<int, Person> personRepository;
         private readonly IRepository<int, Department> deptRepository;
         private readonly IRepository<int, DepartmentAlias> aliasRepository;
+        private readonly IRepository<int, AuthorShip> authorShipRepository;
 
         public LookUpService(IRepositoryContext repositoryContext)
         {
@@ -23,6 +24,8 @@ namespace Apopad.Domain.Service
             personRepository = repositoryContext.GetRepository<int, Person>();
             deptRepository = repositoryContext.GetRepository<int, Department>();
             aliasRepository = repositoryContext.GetRepository<int, DepartmentAlias>();
+            authorShipRepository = repositoryContext.GetRepository<int, AuthorShip>();
+
         }
 
         /// <summary>
@@ -98,6 +101,16 @@ namespace Apopad.Domain.Service
             {
                 pList = removeSamePerson(pList);
             }
+            //利用合著网络筛选
+            if(pList.Count > 1)
+            {
+                pList = FilterByCoAuthorNetWork(author.Paper, pList);
+            }
+            //利用关键词网络筛选
+            if (pList.Count > 1)
+            {
+                pList = FilterByAuthorKeyWordsNetWork(author.Paper, pList);
+            }
 
             //如果只找到一个人或者多个人，将状态设置为待审核，操作者为system, Author的hasCandidate=true
             foreach (var person in pList)
@@ -150,6 +163,127 @@ namespace Apopad.Domain.Service
 
             return pList;
         }
+
+        #region 基于合著网络的重名作者消歧
+        private List<Person> FilterByCoAuthorNetWork(Paper paper, List<Person> people)
+        {          
+            var list = people.Select(p => new { Person = p, Degree = CalculateCoAuthorCoincidenceDegree(paper.Authors, p) });
+            double max = list.Max(a => a.Degree);
+            var results = list.Where(a => a.Degree == max).Select(a => a.Person);
+            if(results.Count() == 1)
+            {
+                return results.ToList();
+            }
+            else
+            {
+                return people;
+            }
+        }
+        private double CalculateCoAuthorCoincidenceDegree(ICollection<Author> authors, Person person)
+        {            
+            var authorShip = authorShipRepository.FindAll(a => a.PersonId == person.Id).FirstOrDefault();
+            if(authorShip == null)
+            {
+                return 0;
+            }
+            var coAuthors = authorShip.Coauthors.Select(a => a.Collaborator.Person)
+                .Union(authorShip.Collaborators.Select(a => a.Coauthor.Person));
+            if(coAuthors.Count() == 0)
+            {
+                return 0;
+            }
+
+            double total = authors.Count;
+            double count = 0, degree = 0;
+            foreach(var author in authors)
+            {
+                if(coAuthors.Any(p => p.NameEN == author.NameEN || p.NameENAbbr == author.NameENAbbr))
+                {
+                    count++;
+                }
+            }
+            degree = count / total;
+
+            return Math.Round(degree, 4);
+        }
+        #endregion
+
+        #region 基于作者-关键词网络的重名作者消歧
+        private List<Person> FilterByAuthorKeyWordsNetWork(Paper paper, List<Person> people)
+        {
+            var list = people.Select(p => new { Person = p, Degree = CalculateKeywordsSimDegree(paper, p) });
+            double max = list.Max(a => a.Degree);
+            var results = list.Where(a => a.Degree == max).Select(a => a.Person);
+            if (results.Count() == 1)
+            {
+                return results.ToList();
+            }
+            else
+            {
+                return people;
+            }
+        }
+        private double CalculateKeywordsSimDegree(Paper paper, Person person)
+        {
+            var paperKeywords = paper.AuthorKeywords.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim().ToLower())
+                .Union(paper.Keywords.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries).Select(t => t.Trim().ToLower()));
+            if (paperKeywords.Count() == 0)
+            {
+                return 0;
+            }
+            var authorShip = authorShipRepository.FindAll(a => a.PersonId == person.Id).FirstOrDefault();
+            if (authorShip == null || authorShip.Keywords.Count == 0)
+            {
+                return 0;
+            }
+
+            double pkCount = paperKeywords.Count();
+            var paperVector = new List<double>();
+            var authorVector = new List<double>();
+            var keywords = paperKeywords.Union(authorShip.Keywords.Select(k => k.Keyword.Name));
+            foreach(var key in keywords)
+            {
+                if (paperKeywords.Contains(key))
+                {
+                    paperVector.Add(Math.Round(10.0 / pkCount, 4));
+                }
+                else
+                {
+                    paperVector.Add(0);
+                }
+
+                var akey = authorShip.Keywords.FirstOrDefault(ak => ak.Keyword.Name == key);
+                if(akey != null)
+                {
+                    authorVector.Add(akey.Weight);
+                }
+                else
+                {
+                    authorVector.Add(0);
+                }
+            }
+
+            double sim = ComputeCosineSimilarity(paperVector.ToArray(), authorVector.ToArray());
+            return Math.Round(sim, 4);
+        }
+        private double ComputeCosineSimilarity(double[] vector1, double[] vector2)
+        {
+            if(vector1.Length != vector2.Length)
+            {
+                throw new Exception("两个向量的维度不一样");
+            }
+
+            double result = 0, denom1 = 0, denom2 = 0;
+            for(int i = 0; i < vector1.Length; i++)
+            {
+                result += (vector1[i] * vector2[i]);
+                denom1 += (vector1[i] * vector1[i]);
+                denom2 += (vector2[i] * vector2[i]);
+            }
+
+            return result / (Math.Sqrt(denom1) * Math.Sqrt(denom2));
+        }
+        #endregion
 
         private List<Person> FilterByPublishYear(Paper paper, List<Person> people)
         {
