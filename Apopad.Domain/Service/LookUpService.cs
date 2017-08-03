@@ -41,6 +41,8 @@ namespace Apopad.Domain.Service
                 paper.Authors.ToList().ForEach(
                     a => a.HasCandidate = LookUpCandidate(a));
                 paper.Status = PaperStatus.CONFIRM;
+
+                repositoryContext.Commit();
             }
 
             repositoryContext.Commit();
@@ -102,7 +104,7 @@ namespace Apopad.Domain.Service
                 pList = removeSamePerson(pList);
             }
             //利用合著网络筛选
-            if(pList.Count > 1)
+            if (pList.Count > 1)
             {
                 pList = FilterByCoAuthorNetWork(author.Paper, pList);
             }
@@ -110,6 +112,12 @@ namespace Apopad.Domain.Service
             if (pList.Count > 1)
             {
                 pList = FilterByAuthorKeyWordsNetWork(author.Paper, pList);
+            }
+
+            //如果未找到此人
+            if (pList.Count == 0)
+            {
+                return false;
             }
 
             //如果只找到一个人或者多个人，将状态设置为待审核，操作者为system, Author的hasCandidate=true

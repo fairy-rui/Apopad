@@ -65,6 +65,8 @@ namespace Apopad.Domain.Service
                 paper.Status = PaperStatus.LOOKUP;
 
                 paperRepository.Update(paper);
+
+                repositoryContext.Commit();
             }
 
             repositoryContext.Commit();
@@ -158,22 +160,42 @@ namespace Apopad.Domain.Service
             HashSet<int> deptId = new HashSet<int>();
             var ary = addrLine.Split(',').Select(t => t.Trim()).ToArray();
 
-            foreach(var address in ary)
+            foreach (var address in ary)
             {
                 var deptList = Search(address, 1, 0.6);
-                if(deptList.Count() > 0)
+                if (deptList.Count() > 0)
                 {
                     var dept = deptList.First();
                     if (!deptId.Contains(dept.DepartmentId))
                     {
                         list.Add(dept.Alias);
                         deptId.Add(dept.DepartmentId);
-                    }                  
+                    }
                 }
             }
-            
+
             return list;
         }
+        ////提取作者署名单位没有采用模糊匹配
+        //private List<string> getContainsAlias(string addrLine)
+        //{
+        //    List<string> list = new List<string>();
+        //    HashSet<int> deptId = new HashSet<int>();
+        //    foreach (var alias in aliasList)
+        //    {
+        //        if (addrLine.Contains(alias.Alias.Replace(" ", "")))
+        //        {
+        //            if (!deptId.Contains(alias.DepartmentId))
+        //            {
+        //                list.Add(alias.Alias);
+        //                deptId.Add(alias.DepartmentId);
+        //            }
+        //        }
+        //    }
+
+        //    return list;
+        //}
+
 
         /// <summary>
         /// 获取某位作者在作者地址列表中所署名的本校位次
@@ -228,6 +250,7 @@ namespace Apopad.Domain.Service
                     if (isOurUnit(addr))
                     {
                         list = getContainsAlias(address[i].ToLower());
+                        //list = getContainsAlias(addr);
                         if (list.Count() > 0)
                         {
                             dept.AddRange(list);

@@ -34,7 +34,7 @@ namespace Apopad.WebServices.Controllers
         public HttpResponseMessage Get()
         {
             var xmlName = HttpContext.Current.Server.MapPath("~/App_Data/paper.xml");
-            var fileName = HttpContext.Current.Server.MapPath("~/upload/SCI-2016-test.xlsx");
+            var fileName = HttpContext.Current.Server.MapPath("~/upload/测试-2012-2016年SCI论文(7381).xlsx");
             var service = new ExcelImportService(fileName, xmlName);
             var result = service.ValidateExcel();
             if (!result.Success)
