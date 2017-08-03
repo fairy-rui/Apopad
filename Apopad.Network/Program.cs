@@ -1,5 +1,6 @@
 ﻿using Apopad.Common.Repositories;
 using Apopad.Network.Config;
+using Apopad.Network.Util;
 using Autofac;
 using SrimsOUC.Data.Model;
 using System;
@@ -21,9 +22,12 @@ namespace Apopad.Network
 
             using(var container = builder.Build())
             {
-                var networking = container.Resolve<Networking>();
+                //var networking = container.Resolve<Networking>();
 
-                networking.BuildNetWork();
+                //networking.BuildNetWork();
+                //导入补全专家信息
+                var importExpert = container.Resolve<IImportExpert>();
+                importExpert.DoImportExpert();
             }
         }
     }

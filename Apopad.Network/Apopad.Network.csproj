@@ -71,6 +71,8 @@
     <Compile Include="TVF\CoAuthor.cs" />
     <Compile Include="TVF\CoreAuthor.cs" />
     <Compile Include="TVF\Keyword.cs" />
+    <Compile Include="Util\ChineseToSpell.cs" />
+    <Compile Include="Util\ImportExpert.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
