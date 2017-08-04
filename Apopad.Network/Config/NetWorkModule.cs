@@ -23,6 +23,8 @@ namespace Apopad.Network.Config
 
             builder.RegisterType<Networking>()
                 .InstancePerLifetimeScope();
+            builder.RegisterType<CoAuthorNetwork>()
+                .InstancePerLifetimeScope();
 
             builder.RegisterType<ImportExpert>()
                 .As<IImportExpert>()

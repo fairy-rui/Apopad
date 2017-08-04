@@ -23,11 +23,15 @@ namespace Apopad.Network
             using(var container = builder.Build())
             {
                 //var networking = container.Resolve<Networking>();
-
                 //networking.BuildNetWork();
-                //导入补全专家信息
-                var importExpert = container.Resolve<IImportExpert>();
-                importExpert.DoImportExpert();
+
+                //构建共著关系
+                var networking = container.Resolve<CoAuthorNetwork>();
+                networking.BuildNetWork();
+
+                ////导入补全专家信息
+                //var importExpert = container.Resolve<IImportExpert>();
+                //importExpert.DoImportExpert();
             }
         }
     }

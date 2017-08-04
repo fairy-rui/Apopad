@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="AutoMapper\AutoMapExtensions.cs" />
     <Compile Include="AutoMapper\Configurations\KeyWordProfile.cs" />
+    <Compile Include="CoAuthorNetwork.cs" />
     <Compile Include="Config\AutoMapperConfig.cs" />
     <Compile Include="Config\NetWorkModule.cs" />
     <Compile Include="Networking.cs" />
