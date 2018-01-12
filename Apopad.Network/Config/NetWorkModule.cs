@@ -1,5 +1,6 @@
 ﻿using Apopad.Common.Repositories;
 using Apopad.Domain.Repositories.EntityFramework;
+using Apopad.Model;
 using Apopad.Network.Util;
 using Autofac;
 using SrimsOUC.Data.Model;
@@ -21,6 +22,9 @@ namespace Apopad.Network.Config
             builder.RegisterType<SrimsContext>()
                 .InstancePerLifetimeScope();
 
+            builder.RegisterType<PaperContext>()
+                .InstancePerLifetimeScope();
+
             builder.RegisterType<Networking>()
                 .InstancePerLifetimeScope();
             builder.RegisterType<CoAuthorNetwork>()
@@ -28,6 +32,10 @@ namespace Apopad.Network.Config
 
             builder.RegisterType<ImportExpert>()
                 .As<IImportExpert>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<FilterPaper>()
+                .As<IFilterPaper>()
                 .InstancePerLifetimeScope();
 
             base.Load(builder);

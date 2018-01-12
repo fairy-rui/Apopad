@@ -11,6 +11,7 @@ namespace Apopad.Network.Config
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile(new KeyWordProfile());
+                cfg.AddProfile(new PaperProfile());
             });
 
             try

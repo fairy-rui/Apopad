@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="AutoMapper\AutoMapExtensions.cs" />
     <Compile Include="AutoMapper\Configurations\KeyWordProfile.cs" />
+    <Compile Include="AutoMapper\Configurations\PaperProfile.cs" />
     <Compile Include="CoAuthorNetwork.cs" />
     <Compile Include="Config\AutoMapperConfig.cs" />
     <Compile Include="Config\NetWorkModule.cs" />
@@ -73,10 +74,13 @@
     <Compile Include="TVF\CoreAuthor.cs" />
     <Compile Include="TVF\Keyword.cs" />
     <Compile Include="Util\ChineseToSpell.cs" />
+    <Compile Include="Util\FilterPaper.cs" />
     <Compile Include="Util\ImportExpert.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +95,10 @@
     <ProjectReference Include="..\Apopad.Domain\Apopad.Domain.csproj">
       <Project>{4597e4c0-7135-4300-9acd-95d12ba80988}</Project>
       <Name>Apopad.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Apopad.Model\Apopad.Model.csproj">
+      <Project>{4f9d484f-dd08-45bd-989a-562e9e93746a}</Project>
+      <Name>Apopad.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\SrimsOUC.Data.Model\SrimsOUC.Data.Model.csproj">
       <Project>{14a7b5d9-461b-4fe5-9852-194f509904dc}</Project>

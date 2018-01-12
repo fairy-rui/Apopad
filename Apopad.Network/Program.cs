@@ -25,13 +25,18 @@ namespace Apopad.Network
                 //var networking = container.Resolve<Networking>();
                 //networking.BuildNetWork();
 
-                //构建共著关系
-                var networking = container.Resolve<CoAuthorNetwork>();
-                networking.BuildNetWork();
+                ////构建共著关系
+                //var networking = container.Resolve<CoAuthorNetwork>();
+                //networking.BuildNetWork();
 
                 ////导入补全专家信息
                 //var importExpert = container.Resolve<IImportExpert>();
                 //importExpert.DoImportExpert();
+
+                //筛选论文
+                var year = new List<int>() { 2015, 2016 };
+                var filterPaper = container.Resolve<IFilterPaper>();
+                filterPaper.DoFilterPaper(year);
             }
         }
     }
